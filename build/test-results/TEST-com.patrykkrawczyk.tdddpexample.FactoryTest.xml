@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.patrykkrawczyk.tdddpexample.FactoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2016-08-10T09:16:08" hostname="szc-pkrawczyk" time="0.002">
+  <properties/>
+  <testcase name="getProducedItemCount_returnsNumberGreaterThanZeroDefiningAmountOfProducedObjects" classname="com.patrykkrawczyk.tdddpexample.FactoryTest" time="0.001"/>
+  <testcase name="getInstance_ShouldNotBeNullAndReturnInitializedFactoryObject" classname="com.patrykkrawczyk.tdddpexample.FactoryTest" time="0.0"/>
+  <testcase name="createProduct_ShouldThrowExceptionForNullArgument" classname="com.patrykkrawczyk.tdddpexample.FactoryTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
