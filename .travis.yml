@@ -2,4 +2,5 @@ language: java
 before_install:
  - chmod +x ./gradlew
 script:
+- jdk_switcher use oraclejdk8
 - "./gradlew clean build --stacktrace"
