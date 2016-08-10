@@ -1,4 +1,9 @@
 language: java
+sudo: false # faster builds
 before_install:
  - chmod +x ./gradlew
  - jdk_switcher use oraclejdk8
+ - pip install --user codecov
+
+after_success:
+  - codecov
