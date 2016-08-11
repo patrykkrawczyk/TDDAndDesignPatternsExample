@@ -12,8 +12,6 @@ public class Command {
     private Operation mOperation;
     private String[] mArguments;
 
-    @SuppressWarnings("unused")
-    private Command() {}
     public Command(String input) {
         if (input == null) throw new IllegalArgumentException("Input cannot be null.");
         if (input.length() == 0) throw new IllegalArgumentException("Input cannot be empty.");

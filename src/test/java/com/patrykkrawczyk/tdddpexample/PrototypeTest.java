@@ -19,7 +19,7 @@ public class PrototypeTest {
     private final String PROTOTYPE_NAME = "TEST";
     private Prototype prototype;
     @Mock
-    Command command;
+    private Command command;
 
 
     @Before

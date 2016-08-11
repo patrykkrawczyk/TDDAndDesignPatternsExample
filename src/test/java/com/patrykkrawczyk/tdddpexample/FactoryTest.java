@@ -3,49 +3,42 @@ package com.patrykkrawczyk.tdddpexample;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 /**
  * Created by Patryk Krawczyk on 10.08.2016.
  */
 public class FactoryTest {
 
-    private Factory factory;
-    @Mock
-    private Prototype prototype;
+    private final String EXAMPLE_PROTOTYPE_NAME = "EXAMPLE";
+
+    private Factory mFactory;
+    private final Prototype prototype = new Prototype(EXAMPLE_PROTOTYPE_NAME);
 
     @Before
     public void setUp() {
-        MockitoAnnotations.initMocks(this);
-        factory = Factory.getInstance();
+        mFactory = Factory.getInstance();
     }
 
     @Test
     public void getInstance_ShouldNotBeNullAndReturnInitializedFactoryObject() {
-        assertNotNull(factory);
-    }
-
-    @Test
-    public void getProducedItemCount_returnsNumberGreaterThanZeroDefiningAmountOfProducedObjects() {
-        assertTrue(factory.getProductsProduced() >= 0);
-    }
-
-    @Test
-    public void incrementProductsProduced_AfterIncrementingValueShouldBeIncreased() {
-        int amount = factory.getProductsProduced();
-        factory.createProduct(prototype);
-        assertEquals(amount + 1, factory.getProductsProduced());
+        assertNotNull(mFactory);
     }
 
     @Test
     public void createProduct_ShouldNotReturnNull() {
-        Product newProduct = factory.createProduct(prototype);
+        Product newProduct = mFactory.createProductFromPrototype(prototype);
         assertNotNull(newProduct);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void createProduct_ShouldThrowExceptionForNullArgument() {
-        factory.createProduct(null);
+        mFactory.createProductFromPrototype(null);
+    }
+
+    @Test
+    public void getOrdersFinished_shouldReturnAmountOfProductsProducedBasedOnPrototype() {
+        int oldSize = mFactory.getFinishedOrdersAmount();
+        mFactory.createProductFromPrototype(prototype);
+        assertEquals(oldSize + 1, mFactory.getFinishedOrdersAmount());
     }
 }

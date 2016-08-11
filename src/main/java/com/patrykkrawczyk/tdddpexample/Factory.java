@@ -6,30 +6,24 @@ package com.patrykkrawczyk.tdddpexample;
 public class Factory {
 
     private static Factory mInstance;
-    private int mProductsProduced;
+    private int mFinishedOrdersAmount;
 
     public static Factory getInstance() {
         if (mInstance == null) mInstance = new Factory();
         return mInstance;
     }
 
-    private void incrementProductsProduced() {
-        ++mProductsProduced;
-    }
-
-    public int getProductsProduced() {
-        return mProductsProduced;
-    }
-
-    private Factory() { }
-
-    public Product createProduct(Prototype prototype) {
+    public Product createProductFromPrototype(Prototype prototype) {
         if (prototype == null) throw new IllegalArgumentException("Prototype cant be null");
 
-        Product newProduct = new Product();
-        incrementProductsProduced();
+        Product product = new Product(prototype.getName());
+        if (product != null) mFinishedOrdersAmount++;
 
-        return newProduct;
+        return product;
+    }
+
+    public int getFinishedOrdersAmount() {
+        return mFinishedOrdersAmount;
     }
 
 }
