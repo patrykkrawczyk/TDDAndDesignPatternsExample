@@ -5,20 +5,20 @@ package com.patrykkrawczyk.tdddpexample;
  */
 public class Factory {
 
-    private static Factory instance;
-    private int productsProduced;
+    private static Factory mInstance;
+    private int mProductsProduced;
 
     public static Factory getInstance() {
-        if (instance == null) instance = new Factory();
-        return instance;
+        if (mInstance == null) mInstance = new Factory();
+        return mInstance;
     }
 
     private void incrementProductsProduced() {
-        ++productsProduced;
+        ++mProductsProduced;
     }
 
     public int getProductsProduced() {
-        return productsProduced;
+        return mProductsProduced;
     }
 
     private Factory() { }
