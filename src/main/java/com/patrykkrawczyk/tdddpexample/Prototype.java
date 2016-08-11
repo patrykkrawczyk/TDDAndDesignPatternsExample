@@ -1,7 +1,5 @@
 package com.patrykkrawczyk.tdddpexample;
 
-import java.util.ArrayDeque;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -15,6 +13,7 @@ public class Prototype {
     private String name;
     private List<Command> commands;
 
+    @SuppressWarnings("unused")
     private Prototype(){}
 
     public Prototype(String name){
@@ -30,8 +29,7 @@ public class Prototype {
     }
 
     public Queue<Command> getCommands() {
-        Queue<Command> queue = new LinkedList<Command>(commands);
-        return queue;
+        return new LinkedList<Command>(commands);
     }
 
     public void addCommand(Command command) {
@@ -44,12 +42,6 @@ public class Prototype {
         return commands.size();
     }
 
-
-    // testy do getcommands
-    //  rozmiary sie zgadzaja
-    //  not null
-
-    // metode size
 
 }
 

@@ -8,7 +8,6 @@ import org.mockito.MockitoAnnotations;
 import java.util.Queue;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -18,7 +17,7 @@ import static org.junit.Assert.assertTrue;
 public class PrototypeTest {
 
     private final String PROTOTYPE_NAME = "TEST";
-    Prototype prototype;
+    private Prototype prototype;
     @Mock
     Command command;
 
@@ -36,12 +35,12 @@ public class PrototypeTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void Prototype_shouldThrowExceptionIfInitializedWithNull() {
-        Prototype prototype = new Prototype(null);
+        new Prototype(null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void Prototype_shouldThrowExceptionIfInitializedWithEmptyValue() {
-        Prototype prototype = new Prototype("");
+        new Prototype("");
     }
 
     @Test
@@ -76,18 +75,17 @@ public class PrototypeTest {
     }
 
     @Test
-    public void getCommands_sholdHaveTheSameSizeAsOriginal() {
-        int size = prototype.getNumberOfCommands();
+    public void getCommands_shouldHaveTheSameSizeAsOriginal() {
         prototype.addCommand(command);
-
         Queue<Command> commands = prototype.getCommands();
-
         assertEquals(commands.size(), prototype.getNumberOfCommands());
     }
 
 
-
-
-
-
 }
+
+
+
+
+
+

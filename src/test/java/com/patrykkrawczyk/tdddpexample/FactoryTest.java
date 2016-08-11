@@ -39,7 +39,7 @@ public class FactoryTest {
     }
 
     @Test
-    public void createProduct_ShouldntReturnNull() {
+    public void createProduct_ShouldNotReturnNull() {
         Product newProduct = factory.createProduct(prototype);
         assertNotNull(newProduct);
     }

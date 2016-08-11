@@ -5,10 +5,11 @@ package com.patrykkrawczyk.tdddpexample;
  */
 public class Factory {
 
-    private static Factory instance = new Factory();
+    private static Factory instance;
     private int productsProduced;
 
     public static Factory getInstance() {
+        if (instance == null) instance = new Factory();
         return instance;
     }
 
