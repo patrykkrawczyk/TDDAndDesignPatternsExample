@@ -66,14 +66,7 @@ public class Command {
     }
 
     private void handleCreateOperationArguments() {
-        if (mArguments.length != 2)
-            throw new IllegalArgumentException("Arguments count for " + mOperation + " should be 2.");
-        else {
-            try {
-                new Double(mArguments[1]);
-            } catch (NumberFormatException e) {
-                throw new IllegalArgumentException("Arguments count for CREATE should be in format of [CREATE part_name weight]");
-            }
-        }
+        if (mArguments.length != 1)
+            throw new IllegalArgumentException("Arguments count for " + mOperation + " should be 1.");
     }
 }

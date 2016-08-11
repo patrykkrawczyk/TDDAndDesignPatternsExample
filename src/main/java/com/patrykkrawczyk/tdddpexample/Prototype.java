@@ -1,5 +1,6 @@
 package com.patrykkrawczyk.tdddpexample;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -10,7 +11,6 @@ import java.util.Queue;
 public class Prototype {
     private String mName;
     private List<Command> mCommands;
-
 
     public Prototype(String name){
         if (name == null) throw new IllegalArgumentException("Name cannot be null.");
@@ -25,7 +25,7 @@ public class Prototype {
     }
 
     public Queue<Command> getCommands() {
-        return new LinkedList<>(mCommands);
+        return new LinkedList<>(Collections.unmodifiableList(mCommands));
     }
 
     public void addCommand(Command command) {
@@ -39,5 +39,8 @@ public class Prototype {
     }
 
 
+    public boolean isValid() {
+        return mCommands.get(mCommands.size()-1).getOperation() == Command.Operation.FINISH;
+    }
 }
 

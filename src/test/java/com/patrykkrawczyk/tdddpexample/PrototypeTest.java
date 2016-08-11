@@ -8,6 +8,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Queue;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -16,21 +17,21 @@ import static org.junit.Assert.assertTrue;
  */
 public class PrototypeTest {
 
-    private final String PROTOTYPE_NAME = "TEST";
-    private Prototype prototype;
+    private final String EXAMPLE_PROTOTYPE_NAME = "TEST";
+    private Prototype mPrototype;
     @Mock
-    private Command command;
+    private Command mCommand;
 
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        prototype = new Prototype(PROTOTYPE_NAME);
+        mPrototype = new Prototype(EXAMPLE_PROTOTYPE_NAME);
     }
 
     @Test
     public void Prototype_shouldInitializedObject() {
-        assertNotNull(new Prototype(PROTOTYPE_NAME));
+        assertNotNull(new Prototype(EXAMPLE_PROTOTYPE_NAME));
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -45,42 +46,55 @@ public class PrototypeTest {
 
     @Test
     public void getName_shouldReturnNotNullString() {
-        assertNotNull(prototype.getName());
+        assertNotNull(mPrototype.getName());
     }
 
     @Test
     public void getName_shouldReturnNotEmptyString() {
-        assertTrue(prototype.getName().length() != 0);
+        assertTrue(mPrototype.getName().length() != 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void addCommand_shouldThrowExceptionIfArgumentIsNull() {
-        prototype.addCommand(null);
+        mPrototype.addCommand(null);
     }
 
     @Test
     public void addCommand_shouldContainObjectAddReturnsProperSize() {
-        int oldSize = prototype.getNumberOfCommands();
+        int oldSize = mPrototype.getNumberOfCommands();
 
-        prototype.addCommand(command);
+        mPrototype.addCommand(mCommand);
 
-        Queue<Command> commands = prototype.getCommands();
+        Queue<Command> commands = mPrototype.getCommands();
 
-        assertTrue(commands.contains(command) && prototype.getNumberOfCommands() > oldSize);
+        assertTrue(commands.contains(mCommand) && mPrototype.getNumberOfCommands() > oldSize);
     }
 
     @Test
     public void getCommands_shouldReturnNotNullCollection() {
-        assertNotNull(prototype.getCommands());
+        assertNotNull(mPrototype.getCommands());
     }
 
     @Test
     public void getCommands_shouldHaveTheSameSizeAsOriginal() {
-        prototype.addCommand(command);
-        Queue<Command> commands = prototype.getCommands();
-        assertEquals(commands.size(), prototype.getNumberOfCommands());
+        mPrototype.addCommand(mCommand);
+        Queue<Command> commands = mPrototype.getCommands();
+        assertEquals(commands.size(), mPrototype.getNumberOfCommands());
     }
 
+    @Test
+    public void isValid_prototypeShouldBeValidWithLastCommandBeingFinish() {
+        Prototype p = new Prototype(EXAMPLE_PROTOTYPE_NAME);
+        p.addCommand(new Command("FINISH x"));
+        assertTrue(p.isValid());
+    }
+
+    @Test
+    public void isValid_prototypeShouldFailWithLastCommandNotBeingFinish() {
+        Prototype p = new Prototype(EXAMPLE_PROTOTYPE_NAME);
+        p.addCommand(new Command("COMBINE x y z"));
+        assertFalse(p.isValid());
+    }
 
 }
 

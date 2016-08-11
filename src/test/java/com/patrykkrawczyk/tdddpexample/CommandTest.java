@@ -9,10 +9,9 @@ import static org.junit.Assert.*;
  */
 public class CommandTest {
 
-    private static final String EXAMPLE_GOOD_COMMAND_LINE = "CREATE felga 3.14";
-    private static final String EXAMPLE_BAD_COMMAND_LINE_BAD_OPERATION    = "CRTEA felga 3.14";
+    private static final String EXAMPLE_GOOD_COMMAND_LINE = "CREATE felga";
+    private static final String EXAMPLE_BAD_COMMAND_LINE_BAD_OPERATION    = "CRTEA felga";
     private static final String EXAMPLE_BAD_COMMAND_LINE_BAD_ARGS         = "CREATE";
-    private static final String EXAMPLE_BAD_COMMAND_LINE_CREATE_BAD_ARGS  = "CREATE felga xxx";
     private static final String EXAMPLE_BAD_COMMAND_LINE_COMBINE_BAD_ARGS = "COMBINE";
     private static final String EXAMPLE_BAD_COMMAND_LINE_FINISH_BAD_ARGS  = "FINISH";
 
@@ -40,11 +39,6 @@ public class CommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void Command_shouldThrowExceptionIfInitializedWithBadArguments() {
         new Command(EXAMPLE_BAD_COMMAND_LINE_BAD_ARGS);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void Command_shouldThrowExceptionIfInitializedWithBadArgumentsForCreateOperation() {
-        new Command(EXAMPLE_BAD_COMMAND_LINE_CREATE_BAD_ARGS);
     }
 
     @Test(expected = IllegalArgumentException.class)

@@ -1,0 +1,8 @@
+CREATE opona
+CREATE opona
+CREATE felga
+CREATE felga
+COMBINE opona felga koloA
+COMBINE opona felga koloB
+COMBINE koloA koloB motor
+FINISH motor
