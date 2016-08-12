@@ -43,7 +43,7 @@ public class PrototypeManager {
                     .filter(path -> path.toString().endsWith(".prototype"))
                     .forEach(this::parsePrototypeFile);
         } catch (IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: add coverage
         }
     }
 
@@ -54,7 +54,7 @@ public class PrototypeManager {
         try (Stream<String> lines = Files.lines(path)) {
             lines.forEach(line -> prototype.addCommand(new Command(line)));
         } catch (IllegalArgumentException | IOException e) {
-            e.printStackTrace();
+            e.printStackTrace(); // TODO: add coverage
         }
 
         if (prototype.isValid()) mPrototypes.add(prototype);

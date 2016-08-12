@@ -16,6 +16,10 @@ public class Factory {
     public Product createProductFromPrototype(Prototype prototype) {
         if (prototype == null) throw new IllegalArgumentException("Prototype cant be null");
 
+        /* TODO:
+            create warehouse
+            stworzyc klase(warehouse, prototype) ktora przetworzy komendy i wypluje obiekt Product
+         */
         Product product = new Product(prototype.getName());
         if (product != null) mFinishedOrdersAmount++;
 
