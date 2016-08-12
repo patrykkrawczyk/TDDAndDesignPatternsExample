@@ -29,4 +29,30 @@ public class Product extends Part  {
 
         return mParts.get(index);
     }
+
+    @Override
+    public String toString() {
+        int indent = 0;
+        StringBuilder sb = new StringBuilder();
+        printDirectoryTree(this, indent, sb);
+        return sb.toString();
+    }
+
+    private static void printDirectoryTree(Product product, int indent, StringBuilder sb) {
+        sb.append(getIndentString(indent));
+        sb.append("+--");
+        sb.append(product.getName());
+        sb.append("\n");
+        for (int k = 0; k < product.getSize(); k++) {
+            Product part = (Product) product.getPartAt(k);
+            printDirectoryTree(part, indent + 1, sb);
+        }
+    }
+
+    private static String getIndentString(int indent) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < indent; i++) sb.append("|  ");
+
+        return sb.toString();
+    }
 }

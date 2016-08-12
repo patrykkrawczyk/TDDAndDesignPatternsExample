@@ -2,7 +2,15 @@ CREATE opona
 CREATE opona
 CREATE felga
 CREATE felga
+CREATE opona
+CREATE opona
+CREATE felga
+CREATE felga
 COMBINE opona felga koloA
 COMBINE opona felga koloB
-COMBINE koloA koloB motor
+COMBINE opona felga koloC
+COMBINE opona felga koloD
+COMBINE koloA koloB koloAB
+COMBINE koloC koloD koloCD
+COMBINE koloAB koloCD motor
 FINISH motor

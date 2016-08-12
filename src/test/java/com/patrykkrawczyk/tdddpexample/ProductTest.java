@@ -6,18 +6,20 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Patryk Krawczyk on 11.08.2016.
  */
 public class ProductTest {
-    private Product product;
+
+    private Product mProduct;
 
     private final String EXAMPLE_NAME = "example";
 
     @Before
     public void setUp() {
-        product = new Product(EXAMPLE_NAME);
+        mProduct = new Product(EXAMPLE_NAME);
     }
 
     @Test
@@ -37,41 +39,60 @@ public class ProductTest {
 
     @Test
     public void getName_shouldReturnNotNullName() {
-        assertNotNull(product.getName());
+        assertNotNull(mProduct.getName());
     }
 
     @Test
     public void getName_shouldReturnNotEmptyName() {
-        assertTrue(product.getName().length() > 0);
+        assertTrue(mProduct.getName().length() > 0);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void addPart_shouldThrowExceptionIfArgumentIsNull() {
-        product.addPart(null);
+        mProduct.addPart(null);
     }
 
     @Test
     public void addPart_shouldProperlyAddPart() {
-        int oldSize = this.product.getSize();
-        product.addPart(new Product(EXAMPLE_NAME));
+        int oldSize = this.mProduct.getSize();
+        mProduct.addPart(new Product(EXAMPLE_NAME));
 
-        assertEquals(oldSize + 1, product.getSize());
+        assertEquals(oldSize + 1, mProduct.getSize());
     }
 
     @Test
     public void getSize_shouldReturnNumberOfParts() {
-        assertTrue(product.getSize() >= 0);
+        assertTrue(mProduct.getSize() >= 0);
     }
 
     @Test
     public void getPartAt_shouldReturnSamePartAtIndex() {
         Part p = new Product(EXAMPLE_NAME);
 
-        int index = product.addPart(p);
-        assertEquals(p, product.getPartAt(index));
+        int index = mProduct.addPart(p);
+        assertEquals(p, mProduct.getPartAt(index));
     }
 
+    @Test
+    public void toString_shouldNotReturnNullString() {
+        String result = mProduct.toString();
+        assertNotNull(result);
+    }
 
+    @Test
+    public void toString_shouldNotReturnEmptyString() {
+        String result = mProduct.toString();
+        assertTrue(result.length() > 0);
+    }
+
+    @Test
+    public void toString_shouldNotReturnNullPointerException() {
+        try {
+            String result = mProduct.toString();
+        } catch (NullPointerException e) {
+            fail("Product.toString() threw NullPointerException.");
+        }
+    }
 
 
 }

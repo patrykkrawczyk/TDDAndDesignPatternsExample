@@ -1,0 +1,8 @@
+CREATE arm
+CREATE arm
+CREATE leg
+CREATE leg
+COMBINE arm arm arms
+COMBINE leg leg legs
+COMBINE arms legs human
+FINISH human
