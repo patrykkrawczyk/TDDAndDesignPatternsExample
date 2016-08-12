@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Patryk Krawczyk on 10.08.2016.
  */
 public class Product extends Part  {
-    private List<Part> mParts;
+    private final List<Part> mParts;
 
     public Product(String name){
         super(name);

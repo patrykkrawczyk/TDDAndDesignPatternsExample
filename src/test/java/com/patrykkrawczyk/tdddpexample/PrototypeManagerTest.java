@@ -21,7 +21,7 @@ public class PrototypeManagerTest {
 
     @Test
     public void getInstance_shouldNotReturnNull() {
-        assertNotNull(mPrototypeManager.getInstance());
+        assertNotNull(PrototypeManager.getInstance());
     }
 
     @Test

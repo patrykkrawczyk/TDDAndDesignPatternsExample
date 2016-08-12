@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 public class PrototypeManager {
 
     private static PrototypeManager mInstance;
-    private List<Prototype> mPrototypes;
+    private final List<Prototype> mPrototypes;
 
     public static PrototypeManager getInstance() {
         if (mInstance == null) mInstance = new PrototypeManager();

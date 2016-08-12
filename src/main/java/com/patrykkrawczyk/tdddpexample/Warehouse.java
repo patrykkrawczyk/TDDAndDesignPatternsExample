@@ -7,8 +7,8 @@ import java.util.NoSuchElementException;
 /**
  * Created by Patryk Krawczyk on 12.08.2016.
  */
-public class Warehouse {
-    private List<Part> mParts;
+class Warehouse {
+    private final List<Part> mParts;
 
     public Warehouse() {
         this.mParts = new ArrayList<>();

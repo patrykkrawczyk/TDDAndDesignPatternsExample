@@ -7,7 +7,7 @@ public abstract class Part {
 
     private String mName;
 
-    protected Part(String name){
+    Part(String name){
         if (name == null) throw new IllegalArgumentException("Name cannot be null.");
         if (name.length() == 0) throw new IllegalArgumentException("Name cannot be empty.");
 

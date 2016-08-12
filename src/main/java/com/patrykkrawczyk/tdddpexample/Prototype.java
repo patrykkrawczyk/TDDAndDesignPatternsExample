@@ -8,7 +8,7 @@ import java.util.Queue;
 /**
  * Created by Patryk Krawczyk on 10.08.2016.
  */
-public class Prototype {
+class Prototype {
     private String mName;
     private List<Command> mCommands;
 

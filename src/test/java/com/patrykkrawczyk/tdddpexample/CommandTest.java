@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  */
 public class CommandTest {
 
-    private static final String EXAMPLE_GOOD_COMMAND_LINE = "CREATE felga";
+    private static final String EXAMPLE_GOOD_CREATE_COMMAND_LINE = "CREATE felga";
     private static final String EXAMPLE_BAD_COMMAND_LINE_BAD_OPERATION    = "CRTEA felga";
     private static final String EXAMPLE_BAD_COMMAND_LINE_BAD_ARGS         = "CREATE";
     private static final String EXAMPLE_BAD_COMMAND_LINE_COMBINE_BAD_ARGS = "COMBINE";
@@ -17,7 +17,7 @@ public class CommandTest {
 
     @Test
     public void Command_shouldInitializeObject() {
-        Command command = new Command(EXAMPLE_GOOD_COMMAND_LINE);
+        Command command = new Command(EXAMPLE_GOOD_CREATE_COMMAND_LINE);
         assertNotNull(command);
     }
 
@@ -53,13 +53,13 @@ public class CommandTest {
 
     @Test
     public void getOperation_shouldReturnProperEnumOfOperation() {
-        Command command = new Command(EXAMPLE_GOOD_COMMAND_LINE);
+        Command command = new Command(EXAMPLE_GOOD_CREATE_COMMAND_LINE);
         assertEquals(Command.Operation.CREATE, command.getOperation());
     }
 
     @Test
     public void getArguments_shouldReturnArgumentsOfOperation() {
-        Command command = new Command(EXAMPLE_GOOD_COMMAND_LINE);
+        Command command = new Command(EXAMPLE_GOOD_CREATE_COMMAND_LINE);
         assertNotNull(command.getArguments());
     }
 }
