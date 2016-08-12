@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
+ * Singleton class, there should be only one instance of this object used to read *.prototype files from drive
  * Created by Patryk Krawczyk on 11.08.2016.
  */
 public class PrototypeManager {
@@ -18,6 +19,9 @@ public class PrototypeManager {
     private static PrototypeManager mInstance;
     private final List<Prototype> mPrototypes;
 
+    /**
+     * @return Returns instance of PrototypeManager
+     */
     public static PrototypeManager getInstance() {
         if (mInstance == null) mInstance = new PrototypeManager();
         return mInstance;
@@ -28,10 +32,16 @@ public class PrototypeManager {
         getPrototypesFromCurrentDirectory();
     }
 
+    /**
+     * @return Amount of available Prototypes
+     */
     public int getPrototypesCount() {
         return mPrototypes.size();
     }
 
+    /**
+     * @return List of available Prototypes
+     */
     public List<Prototype> getPrototypes() {
         return new LinkedList<>(Collections.unmodifiableList(mPrototypes));
     }

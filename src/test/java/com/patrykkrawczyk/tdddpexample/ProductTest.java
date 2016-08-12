@@ -73,6 +73,11 @@ public class ProductTest {
         assertEquals(p, mProduct.getPartAt(index));
     }
 
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void getPartAt_shouldThrowIndexOutOfBoundsExceptionForIncorrectIndex() {
+        new Product(EXAMPLE_NAME).getPartAt(-1);
+    }
+
     @Test
     public void toString_shouldNotReturnNullString() {
         String result = mProduct.toString();

@@ -3,15 +3,36 @@ package com.patrykkrawczyk.tdddpexample;
 import java.util.Arrays;
 
 /**
+ * Command used for Part manipulating, takes advantage of Command Design Pattern.
  * Created by Patryk Krawczyk on 10.08.2016.
  */
 public class Command {
 
-    public enum Operation { CREATE, COMBINE, FINISH }
+    /**
+     * Type of command.
+     */
+    public enum Operation {
+        /**
+         * Command used for creating new parts.
+         *
+         */
+        CREATE,
+        /**
+         * Command used for combining multiple parts into one part.
+         */
+        COMBINE,
+        /**
+         * Command used for creating final product.
+         */
+        FINISH
+    }
 
     private Operation mOperation;
     private String[] mArguments;
 
+    /**
+     * @param input Text line containing command with parameters. Example: "COMMAND param1 param2"
+     */
     public Command(String input) {
         if (input == null) throw new IllegalArgumentException("Input cannot be null.");
         if (input.length() == 0) throw new IllegalArgumentException("Input cannot be empty.");
@@ -23,8 +44,14 @@ public class Command {
         handleOperation();
     }
 
+    /**
+     * @return Type of command operation
+     */
     public Operation getOperation() { return mOperation; }
 
+    /**
+     * @return String[] containing command arguments.
+     */
     public String[] getArguments() { return mArguments; }
 
     private void readOperation(String[] splittedInput) {

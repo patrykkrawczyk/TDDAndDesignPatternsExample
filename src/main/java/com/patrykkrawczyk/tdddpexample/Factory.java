@@ -3,6 +3,8 @@ package com.patrykkrawczyk.tdddpexample;
 import java.util.Queue;
 
 /**
+ * Factory used for creating new Product from Prototype.
+ * Used Factory Design Pattern.
  * Created by Patryk Krawczyk on 10.08.2016.
  */
 public class Factory {
@@ -10,11 +12,19 @@ public class Factory {
     private static Factory mInstance;
     private int mFinishedOrdersAmount;
 
+    /**
+     * @return Existing instance of Factory class.
+     */
     public static Factory getInstance() {
         if (mInstance == null) mInstance = new Factory();
         return mInstance;
     }
 
+    /**
+     * Creates new Product based on Prototype.
+     * @param prototype Specified prototype. Cannot be null.
+     * @return Product.
+     */
     public Product createProductFromPrototype(Prototype prototype) {
         if (prototype == null) throw new IllegalArgumentException("Prototype cant be null");
 
@@ -24,6 +34,9 @@ public class Factory {
         return product;
     }
 
+    /**
+     * @return Overall number of Products created by Factory.
+     */
     public int getFinishedOrdersAmount() {
         return mFinishedOrdersAmount;
     }
